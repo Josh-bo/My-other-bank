@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp2 Page</title>
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="signUp.css">
+    <link rel="stylesheet" href="phone2.css" media="(max-width:568px)">
+    <link rel="stylesheet" href="phone.css" media="(max-width:600px)">
+    <link rel="stylesheet" href="Tablet.css" media="(min-width:610px) and (max-width:768px)">
+    <link rel="stylesheet" href="tab2.css" media="(min-width:769px) and (max-width:1150px)">
+    <link rel="stylesheet" href="res.css" media="(min-width:411px) and (max-width:823px)">
+    <link rel="stylesheet" href="ress.css" media="(min-width:360px) and (max-width:640px)">
+    <link rel="stylesheet" href="fold.css" media="(min-width:280px) and (max-width:653px)">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="parent col-12 mt-5 shadow-lg mx-auto rounded ps-5 pt-4 mb-5">
+
+                <!-- DESIGNS -->
+                <div class="child">
+                    <div class="sign"><b class="fs-5">SIGN UP</b></div>
+                    <div class="sign"><b class="fs-5"><a href="logIn.html" class="text-secondary">LOG IN</a></b></div>
+                </div>
+
+                <div class="rounded-con my-4">
+                    <div class="round text-center fs-4 text-light bg-secondary" onclick="one()"><b class="">1</b></div>
+
+                    <div class="border"></div>
+
+                    <div class="round text-center fs-4 text-light bg-secondary " onclick="ikejii()"><b>2</b>
+                    </div>
+
+                    <div class="border"></div>
+
+                    <div class="round text-center fs-4 text-light"><b class="">3</b></div>
+                </div>
+
+                <!-- INPUTS -->
+                
+                <div id="error" class="text-center"></div>
+
+               <div class="row">
+                <div class="pe-5 my-2">
+                    <legend>CREATE ACCOUNT PIN</legend>
+                    <input class="form-control" type="" placeholder="Number must be atleast 4" maxlength="4" id="pn">
+                </div>
+
+                    <div class="pe-5 my-2">
+                        <legend>DATE OF BIRTH</legend>
+                        <input class="form-control" type="date" id="dob">
+                    </div>
+
+                    <div class="pe-5 my-2">
+                        <legend>COUNTRY</legend>
+                        <input class="form-control" type="text" id="con">
+                    </div>
+
+                    <div class="pe-5 my-2">
+                        <legend>STATE OF ORIGIN</legend>
+                        <input class="form-control" type="text" id="sor">
+                    </div>
+                    
+                <div id="errors" class="text-center"></div>
+
+                    <div class="pe-5 my-2">
+                        <button class="btn btt w-100 text-light" onclick="login()">LOG IN</button>
+
+                        <button class="btn bnt btn-danger my-2 w-100 text-light" onclick="previous3()">PREVIOUS</button>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // let acn = (Math.random() * 11000000) ^ 10000
+        // console.log(acn)
+
+        let allUsersDetails = []
+        if(localStorage.EveryUsersDetails3){
+            let oldData = JSON.parse(localStorage.getItem("EveryUsersDetails3"))
+            allUsersDetails = oldData
+        }
+        
+        const login = () => {
+            if(pn.value == "" || dob.value == "" || con.value == "" || sor.value == ""){
+                error.innerHTML = `<h5 class="text-danger">Fill in the form correctly </h5>`
+                errors.innerHTML = `<h5 class="text-danger">Fill in the form correctly </h5>`
+                
+                setTimeout(() => {
+                    error.innerHTML = ""
+                    errors.innerHTML = ""
+                }, 2000);
+                
+            }else{ 
+                let acn = (Math.random() * 33000) ^ 100000000000
+                console.log(acn)
+              
+                let acId = (Math.random() * 600) ^ 8617
+                  console.log(acId)
+
+                let acId2 = (Math.random() * 600) ^ 8617
+                  console.log(acId2)
+
+                let acId3 = (Math.random() * 600) ^ 8617
+                  console.log(acId3)
+
+                let acId4 = (Math.random() * 600) ^ 8617
+                  console.log(acId4)
+
+                let eachUsersDetails = {
+                userDirectPin : pn.value,
+                dateObirth : dob.value,
+                country : con.value,
+                state : sor.value,
+                accountNumber : acn,
+                accountId : acId,
+                accountId2 : acId2,
+                accountId3 : acId3,
+                accountId4 : acId4,
+                balance : 0,
+            }
+            
+            
+            
+                allUsersDetails.push(eachUsersDetails)
+                console.log(allUsersDetails)
+                localStorage.setItem('EveryUsersDetails3', JSON.stringify(allUsersDetails))  
+                
+                pn.value = ""
+                dob.value = ""
+                con.value = ""
+                sor.value = ""
+
+                
+                window.location = `logIn.html`
+        }
+    }
+
+
+        const one = () => {
+            window.location = `signUp1.html`
+        }
+        const ikejii = () => {
+            window.location = `signUp2.html`
+        }
+
+
+        const previous3 = () => {
+            window.location = `SignUp2.html`
+        }
+    </script>
+</body>
+</html>

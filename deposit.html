@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.css">
+    <title>Admin Dashboard Panel</title> 
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="images/bank-removebg-preview.png" alt="">
+            </div>
+
+            <span class="logo_name">24/7 BANK APP</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="dashboard.html">
+                    <i class="uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="deposit.html">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Deposit</span>
+                </a></li>
+                <li><a href="transfer.html">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Transfer</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Analytics</span>
+                </a></li>
+                <li><a href="history.html">
+                    <i class="uil uil-thumbs-up"></i>
+                    <span class="link-name">History</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">More features</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+            
+            <img src="images/profile.jpg" alt="">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <span class="" style="color:cadetblue;" id="usn">
+                    <b>Hello,</b>
+                    <span id="Usernames"></span>
+                </span>
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">DEPOSIT</span>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 mx-auto text-center w-75 shadow-lg rounded p-5">
+                            <div id="disp" class="text-danger mb-2"></div>
+                            <input type="text" class="form-control text-center" placeholder="Amount" onclick="inp()"  id="depAmount"><br>
+                            <button class="btn btn-primary w-100" onclick="dep()">Deposit</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- <script src="script.js"></script> -->
+
+<script>
+          let allme = JSON.parse(localStorage.getItem('EveryUsersDetails'))
+        let allme2 = JSON.parse(localStorage.getItem('EveryUsersDetails3'))
+        let currentIndex = JSON.parse(localStorage.getItem('currentUser'))
+        let personal = allme[currentIndex]
+        // console.log(personal)
+
+        Usernames.innerHTML = `
+            ${personal.firstname}
+            ${personal.lastname}
+            ${personal.middlename}
+            `
+        const body = document.querySelector("body"),
+            modeToggle = body.querySelector(".mode-toggle");
+            sidebar = body.querySelector("nav");
+            sidebarToggle = body.querySelector(".sidebar-toggle");
+
+        let getMode = localStorage.getItem("mode");
+        if(getMode && getMode ==="dark"){
+            body.classList.toggle("dark");
+        }
+
+        let getStatus = localStorage.getItem("status");
+        if(getStatus ==="close"){
+        
+            sidebar.classList.toggle("close");
+        }
+
+        modeToggle.addEventListener("click", () =>{
+            body.classList.toggle("dark");
+            if(body.classList.contains("dark")){
+                localStorage.setItem("mode", "dark");
+            }else{
+                localStorage.setItem("mode", "light");
+            }
+        });
+
+        sidebarToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            if(sidebar.classList.contains("close")){
+                localStorage.setItem("status", "close");
+            }else{
+                localStorage.setItem("status", "open");
+            }
+        })
+
+
+    const dep = () => {
+        let getbackDetails = JSON.parse(localStorage.getItem("EveryUsersDetails3"))
+        let getbackIndex = JSON.parse(localStorage.getItem("currentUser"))
+        getbackDetails[getbackIndex].balance
+        console.log(getbackDetails[getbackIndex].balance)
+
+        if(depAmount.value == ""){
+            disp.innerHTML = `<b>Please input amount<b>`
+        }else{
+         let newBalance = getbackDetails[getbackIndex].balance += Number(depAmount.value)
+            localStorage.setItem('EveryUsersDetails3',JSON.stringify(getbackDetails))
+
+            depAmount.value = ""
+        }
+    }
+
+    const inp = () => {
+        disp.innerHTML = ``
+    }
+</script>
+</body>
+</html>

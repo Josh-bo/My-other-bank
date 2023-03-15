@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="sel">
+        <option value=""></option>
+        <option value="male">MALE</option>
+        <option value="female">FEMALE</option>
+    </select><br>
+    <button onclick="st()">START</button>
+    <!-- <div id="disprand"></div> -->
+
+    <!-- /^([a-zA-Z0-9]+)@([a-zA-Z0-9]+)\.([a-zA-Z]{2,})(\.[a-zA-Z]+)?$/ -->
+    <!-- ^[\w\W]{5,}$ -->
+
+    <script>
+        const st = () => {
+            console.log(sel.value)
+        }
+
+        // const st = () => {
+        //     let acId = (Math.random() * 600) ^ 8617
+        //     console.log(acId)
+        //     disprand.innerHTML += `<h1>${acId}</h1>`
+        // } 
+
+    //     const ages = [3, 10, 18, 20];
+
+    // ages.findIndex(checkAge);
+
+    // function checkAge(age) {
+    // return age > 18;
+    // console.log(age)
+    // }
+    </script>
+</body>
+</html>

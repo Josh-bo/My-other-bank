@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.parent{
+    width: 30vw;
+}
+.child{
+    display: flex;
+    gap: 180px;
+}
+.sign{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.round{
+    height: 40px;
+    width: 40px;
+    border-radius: 60px;
+    background-color: #EE5684;
+}
+.rounded-con{
+    display: flex;
+    gap: 20px;
+}
+.border{
+    width: 50px;
+    height: 2px;
+    position: relative;
+    top: 20px;
+    border : 1px solid #ddafbd !important;
+}
+.btt{
+    background-color: #EE5684;
+}
+.btt:hover{
+    color: black !important;
+}
+.bnt{
+    background-color: none;
+}
+.bnt:hover{
+    background-color: white;
+    color: black !important;
+}

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>landing page</title>
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="phoneforme.css" media="(max-width:600px)">
+</head>
+<body>
+    <!-- HEADER -->
+        <section class="mb-5">
+            <nav class="fixed-top navbar navbar-expand-lg bg-dark nav-pills">
+                <div class="container-fluid">
+                    <div class="text-light">
+                        <img src="/images/bank-removebg-preview.png" width="40px">
+                        24/7 Direct Banking
+                    </div>
+                  <button class="navbar-toggler bg-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+    
+                  <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                     <div class="ms-5 ps-5"> 
+                        <button class="btn btn-outline-success mx-1 mt-2" onclick="sup()">Sign Up</button>
+                        <button class="btn btn-outline-primary mx-1 mt-2" onclick="log()">Log In</button>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+        </section>
+
+        <!-- Hero Section -->
+          <section class="p-3 ">
+              <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-5 text-center pt-5">
+                    <div class="btext text-primary fs-1 mt-5 pt-5">
+                        <sup class="topsup">You will never regret</sup>
+                        BANKING
+                        <sub class="topsub">With us</sub>
+                    </div>
+
+                    <div class="mt-3">
+                         <b class="manage">Manage your property with us</b>
+                    </div>
+
+                   <a href="/signUp1.html">
+                    <button class="btn btn-outline-primary my-4 shadow-lg">GET STARTED</button>
+                   </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <img class="imm" src="/images/bank.PNG" alt="" style="height: 90vh;">
+                </div>
+              </div>
+          </section>
+ 
+          <!-- Contact Section -->
+          <section>
+              <div class="bg text-light text-center pt-4 pb-3">
+                <div class="fs-5 con">CONTACTS</div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                        <img src="/images/Inst-removebg-preview.png" width="30vh">
+                        <span class="ms-2">24/7 Direct Banking</span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                        <img src="/images/face2.png" width="30vh">
+                        <span class="ms-2">24/7 Direct Banking</span>
+                    </div>
+
+                    <!-- <div class="col-sm-12 col-md-6 col-lg-3">
+                        <img src="/images/link.png" width="60vh">
+                        <span class="">24/7 Direct Banking</span>
+                    </div> -->
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                        <img src="/images/twit.png" width="30vh">
+                        <span class="ms-2">24/7 Direct Banking</span>
+                    </div>
+
+                    <div class="col-sm-12 col-md-6 col-lg-3 mt-2">
+                        <img src="/images/images-removebg-preview.png" width="30vh">
+                        <span class="ms-2">09074167313</span>
+                    </div>
+                </div>
+              </div>
+          </section>
+
+          <!-- Footer -->
+          <section>
+              <div class="bg-dark p-3">
+                <div class="text-light text-center"><b>Copywrite &copy 2023</b></div>
+              </div>
+          </section>
+    <script>
+        const sup = () => {
+            window.location = `signUp1.html`
+        }
+        const log = () => {
+            window.location = `login.html`
+        }
+    </script>
+
+
+
+
+
+    <script src="bootstrap-5.2.2-dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

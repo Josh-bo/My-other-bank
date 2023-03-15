@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<!--=== Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="dash.css">
+
+    <link rel="stylesheet" href="bootstrap-5.2.2-dist/css/bootstrap.css">
+    <title>Admin Dashboard Panel</title> 
+</head>
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="images/bank-removebg-preview.png" alt="">
+            </div>
+
+            <span class="logo_name">24/7 BANK APP</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li><a href="dashboard.html">
+                    <i class="uil uil-estate"></i>
+                    <span class="link-name">Dashboard</span>
+                </a></li>
+                <li><a href="deposit.html">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Deposit</span>
+                </a></li>
+                <li><a href="transfer.html">
+                    <i class="uil uil-files-landscapes"></i>
+                    <span class="link-name">Transfer</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-chart"></i>
+                    <span class="link-name">Analytics</span>
+                </a></li>
+                <li><a href="history.html">
+                    <i class="uil uil-thumbs-up"></i>
+                    <span class="link-name">History</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-comments"></i>
+                    <span class="link-name">More features</span>
+                </a></li>
+                <li><a href="#">
+                    <i class="uil uil-share"></i>
+                    <span class="link-name">Profile</span>
+                </a></li>
+            </ul>
+            
+            <ul class="logout-mode">
+                <li><a href="logIn.html">
+                    <i class="uil uil-signout"></i>
+                    <span class="link-name">Logout</span>
+                </a></li>
+
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                    <span class="link-name">Dark Mode</span>
+                </a>
+
+                <div class="mode-toggle">
+                  <span class="switch"></span>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+            
+            <img src="images/profile.jpg" alt="">
+        </div>
+
+        <div class="dash-content">
+            <span class="" style="color:cadetblue;" id="usn">
+                   <b>Hello,</b>
+                   <span id="Usernames"></span>
+           </span>
+            <div class="overview">
+                <div class="title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="text">Transfer</span>
+                </div>
+
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 mx-auto text-center w-75 shadow-lg rounded p-5">
+                            <div id="error" class="text-danger mb-2"></div>
+                            <div id="disp" class="text-danger mb-2"></div>
+
+                            <input type="text" placeholder="Account Number" class="form-control text-center"id="userAcc" onblur="acc()" onclick="otilo()">
+                            <div class="text-start">
+                                <span id="acd"></span>
+                            </div>
+                            <br>
+                            
+                            <input type="text" class="form-control text-center" placeholder="Amount" onblur="owo()" onclick="otilo()" id="userAmount">
+                            <div class="text-start">
+                                <span id="diss"></span>
+                            </div>
+                            <br>
+                            
+                            <select name="" class="form-control text-center" id="userBank" onblur="bank()" onclick="otilo()">
+                                <option value="">Enter bank name here<option>
+                                    <option value="24/7 Bank">24/7 Bank</option>
+                                    <option value="FIRST BANK">FIRST BANK</option>
+                                    <option value="UBA">UBA</option>
+                                    <option value="KUDA">KUDA</option>
+                                    <option value="KUDI">KUDI</option>
+                                    <option value="PALMPAY">PALMPAY</option>
+                                </select>
+                                <div class="text-start">
+                                 <span id="bk"></span>
+                                 </div>
+                            <br>
+                                
+                            <input type="text" class="form-control text-center" placeholder="Pin" onclick="otilo()" id="userPin">
+                            <br>
+
+                            <button class="btn btn-primary w-100" onclick="trans()">Transfer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        let balout = JSON.parse(localStorage.getItem('EveryUsersDetails3'))
+        let Userout = JSON.parse(localStorage.getItem('currentUser'))
+        let userName = JSON.parse(localStorage.getItem('EveryUsersDetails'))
+        let getPin = balout[Userout].userDirectPin
+        let personal = userName[Userout]
+        console.log(personal)
+
+        // let getAllAcc = balout.accountNumber
+
+        balout.map((eachNumber, i) => {
+            let getAllAcc = eachNumber.accountNumber
+            console.log(getAllAcc,[i]);
+        })
+
+        console.log(balout[Userout].balance)
+        console.log(getPin)
+
+        const trans = () => {
+            if(userAmount.value != "" && userAcc.value != "" && userBank.value != "" && userPin.value != ""){
+                if(userPin.value != getPin){
+                    error.innerHTML = `<h5 class="text-danger">Invalid Pin<h5>`
+                        setTimeout(() => {
+                            error.innerHTML = ""
+                        }, 2000);
+                }else{
+                if(balout[Userout].balance > userAmount.value){
+                    let total = balout[Userout].balance -= Number(userAmount.value)
+                    console.log(total)
+
+                    // getAllAcc.find((accFind, i) => {
+                    //     userAmount.value
+                    // })
+
+                    localStorage.setItem('EveryUsersDetails3',JSON.stringify(balout))
+                    // window.location = `openaccount.html`
+                    alert("Transaction Successful")
+                    
+                    let allTransaction = []
+
+                    if(localStorage.TransactionDetails){
+                      let oldTransaction = JSON.parse(localStorage.getItem("TransactionDetails"))
+                        allTransaction = oldTransaction
+                    }
+
+                    let newTransaction = {
+                        newUserAcc : userAcc.value,
+                        newUserAmount : userAmount.value,
+                        newUserBank : userBank.value,
+                    }
+
+                    allTransaction.push(newTransaction)
+                    console.log(allTransaction)
+                    localStorage.setItem("TransactionDetails", JSON.stringify(allTransaction))
+
+                    userAcc.value = ""
+                    userAmount.value = ""
+                    userBank.value = ""
+                    userPin.value = ""
+                    userAcc.className = `form-control`
+                    userAmount.className = `form-control`
+                    userBank.className = `form-control`
+                    userPin.className = `form-control`
+                    diss.innerHTML = ``
+                    acd.innerHTML = ``
+                    bk.innerHTML = ``
+
+
+                }else{
+                    disp.innerHTML = "Insufficient balance"
+                }
+            }
+            }else{
+                disp.innerHTML = "Please fill the form properly"
+            }
+        }  
+
+        const otilo = () => {
+            disp.innerHTML = ""
+        }
+
+        // const can = () =>{
+        //     window.location = `openaccount.html`
+        // } 
+
+        const owo = () => {
+            let regnumb = /^[0-9]+$/
+            
+            if(!regnumb.test(userAmount.value)){
+                diss.innerHTML = `Incorrect Amount`
+                diss.className = `text-danger`
+                userAmount.className = `form-control is-invalid`
+            }else{
+                diss.innerHTML = `Correct`
+                diss.className = `text-success`
+                userAmount.className = `form-control is-valid`
+            }
+        }
+        const acc = () => {
+            let regacc =  /^[0-9]{10}$/
+            
+            if(!regacc.test(userAcc.value)){
+                acd.innerHTML = `Incorrect Account Number`
+                acd.className = `text-danger`
+                userAcc.className = `form-control is-invalid`
+            }else{
+                acd.innerHTML = `Correct`
+                acd.className = `text-success`
+                userAcc.className = `form-control is-valid`
+            }
+        }
+        // const pins = () => {
+        //     let regpins = /^[0-9]{4}$/
+            
+        //     if(!regpins.test(userPin.value)){
+        //         dp.innerHTML = `Incorrect Pin`
+        //         dp.className = `text-danger`
+        //         userPin.className = `form-control is-invalid`
+        //     }else{
+        //         dp.innerHTML = ``
+        //         dp.className = `text-success`
+        //         userPin.className = `form-control is-valid`
+        //     }
+        // }
+
+        const bank = () => {
+            if(userBank.value == ""){
+                bk.innerHTML = `Bank name is incorrect`
+                bk.className = `text-danger`
+                userBank.className = `form-control is-invalid`
+            }else{
+                bk.innerHTML = `Correct`
+                bk.className = `text-success`
+                userBank.className = `form-control is-valid`
+            }
+        }
+         
+        const body = document.querySelector("body"),
+            modeToggle = body.querySelector(".mode-toggle");
+            sidebar = body.querySelector("nav");
+            sidebarToggle = body.querySelector(".sidebar-toggle");
+
+        let getMode = localStorage.getItem("mode");
+        if(getMode && getMode ==="dark"){
+            body.classList.toggle("dark");
+        }
+        
+        let getStatus = localStorage.getItem("status");
+        if(getStatus && getStatus ==="close"){
+            sidebar.classList.toggle("close");
+        }
+        
+        modeToggle.addEventListener("click", () =>{
+            body.classList.toggle("dark");
+            if(body.classList.contains("dark")){
+                localStorage.setItem("mode", "dark");
+            }else{
+                localStorage.setItem("mode", "light");
+            }
+        });
+
+        sidebarToggle.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+            if(sidebar.classList.contains("close")){
+                localStorage.setItem("status", "close");
+            }else{
+                localStorage.setItem("status", "open");
+            }
+        })
+
+        Usernames.innerHTML = `
+            ${personal.firstname}
+            ${personal.lastname}
+            ${personal.middlename}
+            `
+    </script>
+</body>
+</html>

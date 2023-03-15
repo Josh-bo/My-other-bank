@@ -1,0 +1,41 @@
+.name{
+    justify-content: end;
+    align-self: flex-end;
+    margin: auto;
+}
+body{
+    overflow-x: hidden;
+}
+.btext{
+    font-size:xx-large;
+    font-weight: 900;
+    text-shadow: 2px 2px 39px #ff0000;
+}
+.topsup{
+    font-size: 12px;
+    position: relative;
+    top: -32px;
+    left: 40px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.topsub{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 12px;
+    position: relative;
+    top: 9px;
+    left:-10px;
+}
+.con{
+    font-size:xx-large;
+    font-weight: 900;
+    text-shadow: 2px 2px 39px #FE5D89;
+}
+.bg{
+    margin-top: -17px;
+    background-color: #164BCD;
+}
+.manage{
+    font-size:xx-large;
+    font-weight: 900;
+    font-family:monospace;
+}
